@@ -106,7 +106,6 @@ body {
     cursor: pointer;
 }
 
-
 .hero-section {
     text-align: center;
     padding: 80px 20px;
@@ -138,20 +137,29 @@ body {
     padding: 0 20px;
 }
 
+
 .laptop-card {
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 15px var(--shadow); 
-    overflow: hidden; 
+    box-shadow: 0 4px 15px var(--shadow);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
 }
 
 .laptop-card:hover {
     transform: translateY(-8px); 
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
 }
+
+.laptop-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .card-image {
     width: 100%;
@@ -214,7 +222,6 @@ body {
     min-width: 90px; 
 }
 
-
 .card-content .specs li + p { 
     margin: 0;
 }
@@ -262,44 +269,34 @@ body {
     .main-header {
         padding: 10px 15px;
     }
-
     .main-header .logo {
         font-size: 24px;
     }
-
     .main-nav {
         display: none; 
     }
-
     .hero-section {
         padding: 60px 15px;
     }
-
     .hero-section h1 {
         font-size: 2em;
     }
-
     .hero-section p {
         font-size: 1em;
     }
-
     .laptop-listings {
         grid-template-columns: 1fr; 
         padding: 0 15px;
     }
-
     .laptop-card {
         flex-direction: column; 
     }
-
     .card-content h2 {
         font-size: 1.4em;
     }
-
     .card-content .specs li {
         font-size: 0.9em;
     }
-
     .card-image {
         height: 180px; 
     }
@@ -308,15 +305,14 @@ body {
 @media (min-width: 769px) {
     .menu-btn {
         display: none; 
-
+    }
     .sidebar {
         width: 0 !important; 
     }
-
     .close-btn {
         display: none;
     }
-    }}
+}
 
 .hidden {
     display: none;
