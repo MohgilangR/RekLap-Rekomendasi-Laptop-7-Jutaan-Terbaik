@@ -6,347 +6,14 @@
     <title>RekLap - Rekomendasi Laptop 7 Jutaan</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* General Styling & Reset */
-:root {
-    --primary-color: #007bff; /* Biru cerah */
-    --secondary-color: #6c757d; /* Abu-abu */
-    --accent-color: #28a745; /* Hijau untuk highlight/button */
-    --background-light: #f8f9fa; /* Latar belakang terang */
-    --background-dark: #343a40; /* Latar belakang gelap */
-    --text-dark: #343a40; /* Teks gelap */
-    --text-light: #f8f9fa; /* Teks terang */
-    --border-light: #e9ecef; /* Border terang */
-    --shadow: rgba(0, 0, 0, 0.1);
-}
-
-body {
-    font-family: 'Poppins', Arial, sans-serif; /* Menggunakan Google Fonts */
-    margin: 0;
-    background-color: var(--background-light);
-    color: var(--text-dark);
-    line-height: 1.6;
-    scroll-behavior: smooth; /* Smooth scrolling untuk navigasi */
-}
-
-/* --- Header Styling --- */
-.main-header {
-    background-color: #fff;
-    border-bottom: 1px solid var(--border-light);
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px var(--shadow); /* Bayangan lembut */
-    position: sticky; /* Header tetap di atas saat di-scroll */
-    top: 0;
-    z-index: 900;
-}
-
-.main-header .logo {
-    font-size: 28px;
-    font-weight: 700; /* Lebih tebal */
-    color: var(--primary-color); /* Warna utama */
-    letter-spacing: 0.5px; /* Sedikit spasi huruf */
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 600;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.main-nav a:hover {
-    background-color: var(--primary-color);
-    color: var(--text-light);
-}
-
-.menu-btn {
-    font-size: 30px; /* Ukuran ikon lebih besar */
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: var(--text-dark);
-    display: block; /* Selalu tampilkan untuk mobile/tablet */
-    padding: 0;
-    line-height: 1; /* Menjaga agar ikon tidak terlalu tinggi */
-}
-
-/* --- Sidebar Styling --- */
-.sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    background-color: var(--background-dark); /* Latar belakang gelap */
-    overflow-x: hidden;
-    transition: 0.4s; /* Transisi lebih halus */
-    padding-top: 70px; /* Ruang untuk tombol close */
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.sidebar a {
-    padding: 12px 25px;
-    text-decoration: none;
-    font-size: 20px;
-    color: var(--text-light);
-    display: block;
-    transition: 0.2s;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis pemisah */
-}
-
-.sidebar a:last-child {
-    border-bottom: none;
-}
-
-.sidebar a:hover {
-    background-color: var(--primary-color); /* Warna hover primer */
-    color: #fff;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 36px; /* Ukuran ikon lebih besar */
-    color: var(--text-light);
-    cursor: pointer;
-}
-
-/* --- Hero Section --- */
-.hero-section {
-    text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, var(--primary-color), #0056b3); /* Gradien biru */
-    color: #fff;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.hero-section h1 {
-    font-size: 2.5em;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-.hero-section p {
-    font-size: 1.1em;
-    max-width: 700px;
-    margin: 0 auto;
-    opacity: 0.9;
-}
-
-/* --- Laptop Listings & Cards --- */
-.laptop-listings {
-    display: grid; /* Menggunakan Grid untuk layout kartu */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Kolom responsif */
-    gap: 30px; /* Jarak antar kartu */
-    max-width: 1200px;
-    margin: 0 auto 50px auto; /* Margin bawah lebih besar */
-    padding: 0 20px;
-}
-
-.laptop-card {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px var(--shadow); /* Bayangan untuk efek kartu */
-    overflow: hidden; /* Pastikan gambar tidak keluar dari radius */
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efek hover */
-}
-
-.laptop-card:hover {
-    transform: translateY(-8px); /* Sedikit naik saat di-hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Bayangan lebih kuat saat di-hover */
-}
-
-.card-image {
-    width: 100%;
-    height: 220px; /* Tinggi gambar tetap */
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0; /* Latar belakang placeholder jika gambar tidak proporsional */
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Gambar akan discale agar pas tanpa terpotong atau terdistorsi */
-    padding: 10px; /* Sedikit padding agar gambar tidak terlalu mepet */
-}
-
-.card-content {
-    padding: 20px;
-    flex-grow: 1; /* Konten akan mengisi ruang yang tersedia */
-    display: flex;
-    flex-direction: column;
-}
-
-.card-content h2 {
-    font-size: 1.6em;
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 15px;
-    border-bottom: 2px solid var(--border-light); /* Garis bawah pada judul */
-    padding-bottom: 10px;
-}
-
-.card-content .specs {
-    margin-bottom: 20px;
-}
-
-.card-content .specs h4 {
-    font-size: 1.1em;
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-}
-
-.card-content .specs ul {
-    list-style: none; /* Hapus bullet default */
-    padding: 0;
-    margin: 0;
-}
-
-.card-content .specs li {
-    font-size: 0.95em;
-    margin-bottom: 8px;
-    color: var(--text-dark);
-}
-
-.card-content .specs li strong {
-    color: var(--text-dark);
-    display: inline-block; /* Agar teks tebal dan nilai spesifikasi berada di baris yang sama */
-    min-width: 90px; /* Pastikan label spesifikasi memiliki lebar minimum */
-}
-
-/* Remove default paragraph styling from HTML */
-.card-content .specs li + p { /* ini tidak lagi dibutuhkan karena p diganti strong di li */
-    margin: 0;
-}
-
-.ecommerce-link {
-    margin-top: auto; /* Mendorong link ke bagian bawah kartu */
-    padding-top: 15px;
-    border-top: 1px dashed var(--border-light); /* Garis putus-putus */
-    text-align: center;
-}
-
-.ecommerce-link p {
-    font-size: 0.9em;
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-}
-
-.ecommerce-link a img {
-    width: 120px; /* Ukuran logo e-commerce sedikit lebih besar */
-    height: auto;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease;
-}
-
-.ecommerce-link a img:hover {
-    transform: scale(1.05); /* Efek zoom saat di-hover */
-}
-
-/* --- Footer Styling --- */
-.main-footer {
-    background-color: var(--background-dark);
-    color: var(--text-light);
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 50px;
-    font-size: 0.9em;
-    line-height: 1.8;
-}
-
-.main-footer p {
-    margin: 5px 0;
-}
-
-/* --- Media Queries for Responsiveness --- */
-@media (max-width: 768px) {
-    .main-header {
-        padding: 10px 15px;
-    }
-
-    .main-header .logo {
-        font-size: 24px;
-    }
-
-    .main-nav {
-        display: none; /* Sembunyikan navigasi di layar kecil, gunakan sidebar */
-    }
-
-    .hero-section {
-        padding: 60px 15px;
-    }
-
-    .hero-section h1 {
-        font-size: 2em;
-    }
-
-    .hero-section p {
-        font-size: 1em;
-    }
-
-    .laptop-listings {
-        grid-template-columns: 1fr; /* Satu kolom di layar kecil */
-        padding: 0 15px;
-    }
-
-    .laptop-card {
-        flex-direction: column; /* Tetap kolom */
-    }
-
-    .card-content h2 {
-        font-size: 1.4em;
-    }
-
-    .card-content .specs li {
-        font-size: 0.9em;
-    }
-
-    .card-image {
-        height: 180px; /* Tinggi gambar sedikit lebih kecil di mobile */
-    }
-}
-
-@media (min-width: 769px) {
-    .menu-btn {
-        display: none; /* Sembunyikan tombol menu di layar desktop */
-    }
-
-    .sidebar {
-        width: 0 !important; /* Pastikan sidebar tertutup di desktop */
-    }
-
-    .close-btn {
-        display: none;
-    }
-}
-
-/* --- Utility Classes (Optional) --- */
-.hidden {
-    display: none;
-}
-    </style>
 </head>
 <body>
 
     <div id="sidebar" class="sidebar">
         <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">×</a>
-        <a href="#about-developer">Tentang Developer</a>
+        <a href="https://sfys6uz7t8w4lt6vx9rx1a.on.drv.tw/Biografi/about%20us.html#about" target="_blank">Tentang Developer</a>
         <a href="mailto:gilangtono578@gmail.com">Hubungi</a>
-        <a href="https://github.com/your-github-username" target="_blank">My GitHub</a> </div>
+        <a href="https://github.com/MohgilangR" target="_blank">My GitHub</a> </div>
 
     <header class="main-header">
         <button class="menu-btn" onclick="openSidebar()">☰</button>
@@ -381,7 +48,7 @@ body {
                 <div class="ecommerce-link">
                     <p>Beli di:</p>
                     <a href="https://shopee.co.id/product/1368474464/29277458494?uls_trackid=52v3gpf900c0&utm_campaign=-&utm_content=34529-615578167a674b7695427a7ce8b86ba8--103088&utm_medium=affiliates&utm_source=an_11188960000&utm_term=d6okybaj5irb" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Shopee-logo.jpg" alt="Shopee" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS17I_nNotTG9CiWE-EmwQNz0dJOSL_mgsyHQ&s" alt="Shopee" />
                     </a>
                 </div>
             </div>
@@ -406,7 +73,7 @@ body {
                 <div class="ecommerce-link">
                     <p>Beli di:</p>
                     <a href="https://invl.me/clmp0zd" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Shopee-logo.jpg" alt="Shopee" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS17I_nNotTG9CiWE-EmwQNz0dJOSL_mgsyHQ&s" alt="Shopee" />
                     </a>
                 </div>
             </div>
@@ -431,7 +98,7 @@ body {
                 <div class="ecommerce-link">
                     <p>Beli di:</p>
                     <a href="https://shopee.co.id/Axioo-HYPE-R3-R5-OLED-I3-I5-1215-Ram-24GB-Ssd-256GB-W11-Permanent-14.0Fhd-Blk-%28Under-1Kg%29-Slim-i.318218543.28276396766?is_from_login=true&sp_atk=3644ac65-21d6-4c9a-9b6b-914f3382eaf1&uls_trackid=52t1iufe01bs&utm_campaign=-&utm_content=34529-c65c3edf9ef04a14a777515bedce6a7f--103088&utm_medium=affiliates&utm_source=an_11188960000&utm_term=d59u6ksvakx1&xptdk=3644ac65-21d6-4c9a-9b6b-914f3382eaf1" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Shopee-logo.jpg" alt="Shopee" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS17I_nNotTG9CiWE-EmwQNz0dJOSL_mgsyHQ&s" alt="Shopee" />
                     </a>
                 </div>
             </div>
@@ -456,7 +123,7 @@ body {
                 <div class="ecommerce-link">
                     <p>Beli di:</p>
                     <a href="https://shopee.co.id/-EXCLUSIVE-LAUNCH-ADVAN-Laptop-Gaming-Pixwar-x-Transformers-AMD-Ryzen-7-6800H-16GB-512GB-15.6-FHD-WIFI-6-Dual-Cooling-System-Windows-11-Garansi-Resmi-1-Tahun-i.919692407.27826670278" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Shopee-logo.jpg" alt="Shopee" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS17I_nNotTG9CiWE-EmwQNz0dJOSL_mgsyHQ&s" alt="Shopee" />
                     </a>
                 </div>
             </div>
@@ -481,7 +148,7 @@ body {
                 <div class="ecommerce-link">
                     <p>Beli di:</p>
                     <a href="https://shopee.co.id/-EXCLUSIVE-LAUNCH-ADVAN-Laptop-Gaming-Pixwar-x-Transformers-AMD-Ryzen-7-6800H-16GB-512GB-15.6-FHD-WIFI-6-Dual-Cooling-System-Windows-11-Garansi-Resmi-1-Tahun-i.919692407.27826670278" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Shopee-logo.jpg" alt="Shopee" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS17I_nNotTG9CiWE-EmwQNz0dJOSL_mgsyHQ&s" alt="Shopee" />
                     </a>
                 </div>
             </div>
@@ -506,7 +173,7 @@ body {
                 <div class="ecommerce-link">
                     <p>Beli di:</p>
                     <a href="https://invl.io/cllosy3" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Shopee-logo.jpg" alt="Shopee" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS17I_nNotTG9CiWE-EmwQNz0dJOSL_mgsyHQ&s" alt="Shopee" />
                     </a>
                 </div>
             </div>
@@ -531,7 +198,7 @@ body {
                 <div class="ecommerce-link">
                     <p>Beli di:</p>
                     <a href="https://invl.me/clmp0en" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Shopee-logo.jpg" alt="Shopee" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS17I_nNotTG9CiWE-EmwQNz0dJOSL_mgsyHQ&s" alt="Shopee" />
                     </a>
                 </div>
             </div>
@@ -541,16 +208,9 @@ body {
     <footer class="main-footer">
         <p>&copy; 2025 RekLap. All rights reserved.</p>
         <p>Terima Kasih telah berkunjung!</p>
-        <a style="color: aliceblue;" href="#">Tentang Developer</a>
+        <a style="color: aliceblue;" href="https://sfys6uz7t8w4lt6vx9rx1a.on.drv.tw/Biografi/about%20us.html#about">Tentang Developer</a>
     </footer>
-<script>
-    function openSidebar() {
-    document.getElementById("sidebar").style.width = "280px"; // Sedikit lebih lebar
-}
 
-function closeSidebar() {
-    document.getElementById("sidebar").style.width = "0";
-}
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
